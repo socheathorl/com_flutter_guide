@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import './question.dart';
-import './answer.dart';
+import './quiz.dart';
+import './result.dart';
 
 void main() {
   runApp(MyApp());
@@ -18,37 +18,83 @@ class _MyAppState extends State<MyApp> {
     {
       'questionText': "What's your favourite color?",
       'answer': [
-        'Red',
-        'Blue',
-        'White',
-        'Green'
+        {
+          'text': 'Red',
+          'score': 10
+        },
+        {
+          'text': 'Blue',
+          'score': 8
+        },
+        {
+          'text': 'White',
+          'score': 5
+        },
+        {
+          'text': 'Green',
+          'score': 2
+        },
       ]
     },
     {
       'questionText': "What's your favourite animal?",
       'answer': [
-        'Dog',
-        'Cat',
-        'Rabbit',
-        'Cow'
+        {
+          'text': 'Dog',
+          'score': 9
+        },
+        {
+          'text': 'Cat',
+          'score': 5
+        },
+        {
+          'text': 'Rabbit',
+          'score': 10
+        },
+        {
+          'text': 'Cow',
+          'score': 3
+        },
       ]
     },
     {
       'questionText': "What's your favourite phone?",
       'answer': [
-        'IPhone',
-        'Samsung',
-        'Mi',
-        'Vivo'
+        {
+          'text': 'IPhone',
+          'score': 9
+        },
+        {
+          'text': 'Samsung',
+          'score': 10
+        },
+        {
+          'text': 'Mi',
+          'score': 8
+        },
+        {
+          'text': 'Vivo',
+          'score': 6
+        },
       ]
     }
   ];
   int _questionIndex = 0;
-  void _answerQuestion() {
+  int _totalScore = 0;
+  void _answerQuestion(int score) {
+    _totalScore += score;
+
     setState(() {
       _questionIndex = _questionIndex + 1;
     });
     print('Answer chosen!');
+  }
+
+  void _resetQuiz() {
+    setState(() {
+      _questionIndex = 0;
+      _totalScore = 0;
+    });
   }
 
   @override
@@ -59,17 +105,12 @@ class _MyAppState extends State<MyApp> {
           title: Text('My First App'),
         ),
         body: _questionIndex < _questions.length
-            ? Column(
-                children: [
-                  Question(_questions[_questionIndex]['questionText'] as String),
-                  ...(_questions[_questionIndex]['answer'] as List<String>).map((answer) {
-                    return Answer(_answerQuestion, answer);
-                  }).toList(),
-                ],
+            ? Quiz(
+                questions: _questions,
+                answerQuestion: _answerQuestion,
+                questionIndex: _questionIndex,
               )
-            : Center(
-                child: Text('You did it!'),
-              ),
+            : Result(_totalScore, _resetQuiz),
       ),
     );
   }
