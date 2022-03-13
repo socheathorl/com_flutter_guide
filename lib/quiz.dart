@@ -5,7 +5,7 @@ import './answer.dart';
 class Quiz extends StatelessWidget {
   final List<Map<String, Object>> questions;
   final int questionIndex;
-  final VoidCallback answerQuestion;
+  final dynamic answerQuestion;
 
   Quiz({required this.questions, required this.answerQuestion, required this.questionIndex});
 
