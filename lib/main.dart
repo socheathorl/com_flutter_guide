@@ -45,12 +45,13 @@ class _MyAppState extends State<MyApp> {
   ];
   int _questionIndex = 0;
   void _answerQuestion() {
-    if (_questionIndex < questions.length - 1) {
-      setState(() {
-        _questionIndex = _questionIndex + 1;
-      });
-      print('Answer chosen!');
+    if (_questionIndex < questions.length) {
+      _questionIndex = 0;
     }
+    setState(() {
+      _questionIndex = _questionIndex + 1;
+    });
+    print('Answer chosen!');
   }
 
   @override
