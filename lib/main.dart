@@ -14,45 +14,47 @@ class MyApp extends StatefulWidget {
 }
 
 class _MyAppState extends State<MyApp> {
+  final questions = const [
+    {
+      'questionText': "What's your favourite color?",
+      'answer': [
+        'Red',
+        'Blue',
+        'White',
+        'Green'
+      ]
+    },
+    {
+      'questionText': "What's your favourite animal?",
+      'answer': [
+        'Dog',
+        'Cat',
+        'Rabbit',
+        'Cow'
+      ]
+    },
+    {
+      'questionText': "What's your favourite phone?",
+      'answer': [
+        'IPhone',
+        'Samsung',
+        'Mi',
+        'Vivo'
+      ]
+    }
+  ];
   int _questionIndex = 0;
   void _answerQuestion() {
-    setState(() {
-      _questionIndex = _questionIndex + 1;
-    });
-    print('Answer chosen!');
+    if (_questionIndex < questions.length) {
+      setState(() {
+        _questionIndex = _questionIndex + 1;
+      });
+      print('Answer chosen!');
+    }
   }
 
   @override
   Widget build(BuildContext context) {
-    var questions = [
-      {
-        'questionText': "What's your favourite color?",
-        'answer': [
-          'Red',
-          'Blue',
-          'White',
-          'Green'
-        ]
-      },
-      {
-        'questionText': "What's your favourite animal?",
-        'answer': [
-          'Dog',
-          'Cat',
-          'Rabbit',
-          'Cow'
-        ]
-      },
-      {
-        'questionText': "What's your favourite phone?",
-        'answer': [
-          'IPhone',
-          'Samsung',
-          'Mi',
-          'Vivo'
-        ]
-      }
-    ];
     return MaterialApp(
       home: Scaffold(
         appBar: AppBar(
