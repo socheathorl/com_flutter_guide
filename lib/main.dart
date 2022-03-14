@@ -61,6 +61,7 @@ class MyHomePage extends StatelessWidget {
                       decoration: BoxDecoration(
                         border: Border.all(color: Colors.black, width: 2),
                       ),
+                      padding: EdgeInsets.all(10),
                       child: Text(tx.amount.toString()),
                     ),
                     Column(
