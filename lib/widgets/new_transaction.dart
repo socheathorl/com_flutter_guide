@@ -12,7 +12,7 @@ class NewTransaction extends StatelessWidget {
     return Card(
       elevation: 5,
       child: Container(
-        childern: Column(
+        children: Column(
           crossAxisAlignment: CrossAxisAlignment.end,
           children: <Widget>[
             TexField(
