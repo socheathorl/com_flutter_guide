@@ -15,11 +15,11 @@ class NewTransaction extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.end,
           children: <Widget>[
-            TexField(
+            TextField(
               decoration: InputDecoration(labelText: 'Title'),
               controller: titleController,
             ),
-            TexField(
+            TextField(
               decoration: InputDecoration(labelText: 'Amount'),
               controller: amountController,
             ),
