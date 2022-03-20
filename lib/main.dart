@@ -143,6 +143,7 @@ class _MyHomePageState extends State<MyHomePage> {
 
     final txListWidget = Container(
       height: (mediaQuery.size.height - appBar.preferredSize.height - mediaQuery.padding.top) * 0.7,
+      child: TransactionList(_userTransactions, _deleteTransaction),
     );
 
     final pageBody = SafeArea(
@@ -160,13 +161,14 @@ class _MyHomePageState extends State<MyHomePage> {
                   style: Theme.of(context).textTheme.headline6,
                 ),
                 Switch.adaptive(
-                    activeColor: Theme.of(context).accentColor,
-                    value: _showChart,
-                    onChanged: (val) {
-                      setState(() {
-                        _showChart = val;
-                      });
-                    })
+                  activeColor: Theme.of(context).accentColor,
+                  value: _showChart,
+                  onChanged: (val) {
+                    setState(() {
+                      _showChart = val;
+                    });
+                  },
+                ),
               ],
             ),
           if (!isLandscape)
